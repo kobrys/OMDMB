@@ -17,6 +17,6 @@
         <property name="databaseName" value="databaseName" />
     </bean>
 
-    <bean id="dataGenerator" class="pl.edu.agh.omdmb.unit.datagenerator.DataGenerator" />
+    <bean id="dataGenerator" class="pl.edu.agh.omdmb.datagenerator.DataGenerator" />
 
 </beans>
