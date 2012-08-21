@@ -1,0 +1,34 @@
+<scenario>
+    <persistence>
+        <jpaPersistenceFile>persistence.xml</jpaPersistenceFile>
+        <persistenceUnitConfigurations>
+            <unit>
+                <typeName>hibernate</typeName>
+                <configurationFile>hibernate_connection.properties</configurationFile>
+            </unit>
+            <unit>
+                <typeName>objectDb</typeName>
+                <configurationFile>objectDb_connection.properties</configurationFile>
+            </unit>
+            <unit>
+                <typeName>hibernate</typeName>
+                <configurationFile>keyValue.properties</configurationFile>
+            </unit>
+        </persistenceUnitConfigurations>
+    </persistence>
+
+    <dataModel>
+        <classes>
+            <class>pl.edu.agh.omdmb.testdao.FirstDao</class>
+        </classes>
+    </dataModel>
+
+    <data>
+        <execution1>
+            <dataDensity>0.5</dataDensity>
+            <overlap>1</overlap>
+            <objects>10000</objects>
+            <independence>30</independence>
+        </execution1>
+    </data>
+</scenario>
