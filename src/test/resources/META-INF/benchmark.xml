@@ -4,22 +4,21 @@
         <persistenceUnitConfigurations>
             <unit>
                 <typeName>HIBERNATE</typeName>
-                <configurationFile>META-INF/hibernate_connection.properties</configurationFile>
+                <configurationFile>hibernate_connection.properties</configurationFile>
             </unit>
-            <!--<unit>-->
-                <!--<typeName>OBJECT_DB</typeName>-->
-                <!--<configurationFile>objectDb_connection.properties</configurationFile>-->
-            <!--</unit>-->
-            <!--<unit>-->
-                <!--<typeName>KEY_VALUE</typeName>-->
-                <!--<configurationFile>keyValue.properties</configurationFile>-->
-            <!--</unit>-->
+            <unit>
+                <typeName>OBJECT_DB</typeName>
+                <configurationFile>objectDb_connection.properties</configurationFile>
+            </unit>
+            <unit>
+                <typeName>KEY_VALUE</typeName>
+                <configurationFile>keyValue.properties</configurationFile>
+            </unit>
         </persistenceUnitConfigurations>
     </persistence>
 
     <dataModel>
         <classes>
-            <class>pl.edu.agh.omdmb.testdao.FirstDao</class>
             <class>pl.edu.agh.omdmb.testdao.FirstDao</class>
         </classes>
     </dataModel>
@@ -28,7 +27,7 @@
         <execution>
             <dataDensity>0.5</dataDensity>
             <overlap>1</overlap>
-            <numberOfObjects>10000</numberOfObjects>
+            <objects>10000</objects>
             <independence>30</independence>
         </execution>
     </data>
