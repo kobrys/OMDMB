@@ -63,8 +63,8 @@ public class BenchmarkScenarioBuilderTest {
         //then
         assertNotNull(benchmarkScenario);
         verify(persistenceUnitConfigurationBuilder).build(HIBERNATE, hibernateProperties, annotatedClasses);
-        assertEquals(benchmarkScenario.getPersistenceUnitConfigurations().size(), 1);
-        assertEquals(benchmarkScenario.getPersistenceUnitConfigurations().get(0), persistenceUnitConfiguration);
+        assertEquals(1, benchmarkScenario.getPersistenceUnitConfigurations().size());
+        assertEquals(persistenceUnitConfiguration, benchmarkScenario.getPersistenceUnitConfigurations().get(HIBERNATE));
 
         assertEquals(benchmarkScenario.getExecutionsParameters().size(), 2);
         assertEquals(benchmarkScenario.getExecutionsParameters().get(0), executionParametersMock1);

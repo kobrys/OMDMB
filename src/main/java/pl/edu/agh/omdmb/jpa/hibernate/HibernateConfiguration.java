@@ -8,8 +8,6 @@ import java.util.Properties;
 
 public class HibernateConfiguration extends PersistenceUnitConfiguration {
 
-
-
     public HibernateConfiguration(Properties aHibernateProperties, List<Class<?>> annotatedClasses) {
         super(aHibernateProperties, annotatedClasses);
     }

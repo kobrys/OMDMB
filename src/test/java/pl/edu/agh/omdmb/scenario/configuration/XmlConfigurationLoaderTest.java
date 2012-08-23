@@ -1,6 +1,7 @@
 package pl.edu.agh.omdmb.scenario.configuration;
 
 import org.apache.commons.digester3.Digester;
+import org.apache.commons.digester3.binder.RulesModule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -20,11 +21,12 @@ public class XmlConfigurationLoaderTest {
     @Mock Digester digester;
     @Mock Scenario scenario;
 
-    @InjectMocks XmlConfigurationLoader xmlConfigurationLoader;
+    XmlConfigurationLoader xmlConfigurationLoader = new XmlConfigurationLoader();
 
     @Test
     public void testLoadScenarioFromFile() throws Exception {
         //given
+        xmlConfigurationLoader.setDigester(digester);
         String filename = FILENAME;
         when(digester.parse(new File(FILENAME))).thenReturn(scenario);
 

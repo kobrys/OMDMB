@@ -11,8 +11,16 @@ public class XmlConfigurationLoader {
 
     private Digester digester;
 
+    public XmlConfigurationLoader() {
+
+    }
+
     public XmlConfigurationLoader(RulesModule rulesModule) {
         digester = DigesterLoader.newLoader(rulesModule).newDigester();
+    }
+
+    public void setDigester(Digester digester) {
+        this.digester = digester;
     }
 
     public Scenario loadScenarioFromFile(String filename) {
@@ -21,9 +29,5 @@ public class XmlConfigurationLoader {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public void setRulesModule(RulesModule rulesModule) {
-        System.out.println("SertRulesModule");
     }
 }

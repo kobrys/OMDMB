@@ -10,21 +10,18 @@ import pl.edu.agh.omdmb.scenario.configuration.ExecutionParameters;
 import pl.edu.agh.omdmb.scenario.configuration.Scenario;
 
 import java.security.PublicKey;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 public class BenchmarkScenario implements Runnable {
 
     @Autowired private EntityManagerRegistry entityManagerRegistry;
     @Autowired private EntityManagerBuilder entityManagerBuilder;
 
-    private List<PersistenceUnitConfiguration> persistenceUnitConfigurations;
+    private Map<EntityManagerProviderType, PersistenceUnitConfiguration> persistenceUnitConfigurations;
     private List<ExecutionParameters> executionsParameters;
 
     public BenchmarkScenario() {
-        persistenceUnitConfigurations = new LinkedList<PersistenceUnitConfiguration>();
+        persistenceUnitConfigurations = new HashMap<EntityManagerProviderType, PersistenceUnitConfiguration>();
         executionsParameters = new LinkedList<ExecutionParameters>();
     }
 
@@ -33,34 +30,36 @@ public class BenchmarkScenario implements Runnable {
 
     }
 
-//    void createEnvironment(Map<EntityManagerProviderType, Properties> entityManagerProviderTypePropertiesMap,
-//                           List<Class<?>> dataModelClasses) {
-//        for (Map.Entry<EntityManagerProviderType, Properties> entityManagerProviderTypePropertiesEntry :
-//                entityManagerProviderTypePropertiesMap.entrySet()) {
-//            EntityManagerProviderType persistenceUnitType = entityManagerProviderTypePropertiesEntry.getKey();
-//
-//        }
-//
-//
-////        for (Map.Entry<EntityManagerProviderType, P> persistenceUnitConfiguration :
-////                entityManagerProviderTypePropertiesMap.entrySet()) {
-////            EntityManagerProviderType persistenceUnitType = persistenceUnitConfiguration.getKey();
-////            PersistenceUnitConfiguration persistenceUnitProperties = persistenceUnitConfiguration.getValue();
-//
-////            EntityManagerProvider entityManagerProvider = entityManagerBuilder.createEntityManagerProvider(
-////                    persistenceUnitType, persistenceUnitProperties);
-////
-////            entityManagerRegistry.register(persistenceUnitType, entityManagerProvider.getEntityManager());
-////        }
-//    }
+    void createEnvironment(Map<EntityManagerProviderType, Properties> entityManagerProviderTypePropertiesMap,
+                           List<Class<?>> dataModelClasses) {
 
-    public void addPersistenceUnitConfiguration(PersistenceUnitConfiguration persistenceUnitConfiguration) {
-        persistenceUnitConfigurations.add(persistenceUnitConfiguration);
+        for (Map.Entry<EntityManagerProviderType, Properties> entityManagerProviderTypePropertiesEntry :
+                entityManagerProviderTypePropertiesMap.entrySet()) {
+            EntityManagerProviderType persistenceUnitType = entityManagerProviderTypePropertiesEntry.getKey();
+
+        }
+
+
+//        for (Map.Entry<EntityManagerProviderType, P> persistenceUnitConfiguration :
+//                entityManagerProviderTypePropertiesMap.entrySet()) {
+//            EntityManagerProviderType persistenceUnitType = persistenceUnitConfiguration.getKey();
+//            PersistenceUnitConfiguration persistenceUnitProperties = persistenceUnitConfiguration.getValue();
+
+//            EntityManagerProvider entityManagerProvider = entityManagerBuilder.createEntityManagerProvider(
+//                    persistenceUnitType, persistenceUnitProperties);
+//
+//            entityManagerRegistry.register(persistenceUnitType, entityManagerProvider.getEntityManager());
+//        }
+    }
+
+    public void addPersistenceUnitConfiguration(EntityManagerProviderType entityManagerProviderType,
+                                                PersistenceUnitConfiguration persistenceUnitConfiguration) {
+        persistenceUnitConfigurations.put(entityManagerProviderType, persistenceUnitConfiguration);
 
     }
 
-    public List<PersistenceUnitConfiguration> getPersistenceUnitConfigurations() {
-        return persistenceUnitConfigurations;
+    public Map<EntityManagerProviderType, PersistenceUnitConfiguration> getPersistenceUnitConfigurations() {
+        return  persistenceUnitConfigurations;
     }
 
     public void addExecutionParameters(ExecutionParameters executionParameters) {

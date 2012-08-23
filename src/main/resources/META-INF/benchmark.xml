@@ -19,8 +19,7 @@
 
     <dataModel>
         <classes>
-            <class>pl.edu.agh.omdmb.testdao.FirstDao</class>
-            <class>pl.edu.agh.omdmb.testdao.FirstDao</class>
+            <annotatedClass><name>pl.edu.agh.omdmb.testdao.FirstDao</name></annotatedClass>
         </classes>
     </dataModel>
 

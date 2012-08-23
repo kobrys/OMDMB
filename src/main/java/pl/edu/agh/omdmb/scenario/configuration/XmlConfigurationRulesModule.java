@@ -15,7 +15,8 @@ public class XmlConfigurationRulesModule extends AbstractRulesModule {
         forPattern("scenario/persistence/persistenceUnitConfigurations/unit/typeName").setBeanProperty();
         forPattern("scenario/persistence/persistenceUnitConfigurations/unit/configurationFile").setBeanProperty();
 
-//        forPattern("scenario/dataModel/classes/class").callParam().ofIndex(0).then().callMethod("addDataModelClass").withParamCount(1);
+        forPattern("scenario/dataModel/classes/annotatedClass").createObject().ofType(AnnotatedClass.class).then().setNext("addDataModelClass");;
+        forPattern("scenario/dataModel/classes/annotatedClass/name").setBeanProperty();
 
         forPattern("scenario/data").createObject().ofType(LinkedList.class).then().setNext("setExecutionParametersList");
         forPattern("scenario/data/execution").createObject().ofType(ExecutionParameters.class).then().setNext("add");

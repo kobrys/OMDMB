@@ -28,7 +28,7 @@ public class BenchmarkScenarioBuilder {
 
     private void createPersistenceUnitConfigurations(Scenario scenario, Map<EntityManagerProviderType, Properties> configurationProperties, BenchmarkScenario benchmarkScenario) {
         for (Map.Entry<EntityManagerProviderType, Properties> configurationEntry : configurationProperties.entrySet()) {
-            benchmarkScenario.addPersistenceUnitConfiguration(persistenceUnitConfigurationBuilder.build(
+            benchmarkScenario.addPersistenceUnitConfiguration(configurationEntry.getKey(), persistenceUnitConfigurationBuilder.build(
                     configurationEntry.getKey(), configurationEntry.getValue(), scenario.getDataModelClasses()));
         }
     }

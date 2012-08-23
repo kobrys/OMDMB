@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import pl.edu.agh.omdmb.core.scenario.BenchmarkScenarioBuilder;
 import pl.edu.agh.omdmb.jpa.util.EntityManagerProviderType;
 import pl.edu.agh.omdmb.scenario.configuration.PersistenceUnitConfiguration;
 import pl.edu.agh.omdmb.scenario.configuration.PropertiesConfigurationLoader;
@@ -36,6 +37,8 @@ public class BenchmarkConfigurationLoaderTest {
     @Mock PersistenceUnitConfiguration persistenceUnitConfigurationMock1;
     @Mock PersistenceUnitConfiguration persistenceUnitConfigurationMock2;
     @Mock PersistenceUnitConfiguration persistenceUnitConfigurationMock3;
+
+    @Mock BenchmarkScenarioBuilder benchmarkScenarioBuilder;
 
     @InjectMocks
     BenchmarkConfigurationLoader benchmarkConfigurationLoader;

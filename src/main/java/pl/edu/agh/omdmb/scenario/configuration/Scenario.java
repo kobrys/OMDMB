@@ -36,9 +36,9 @@ public class Scenario {
         return dataModelClasses;
     }
 
-    public void addDataModelClass(String dataModelClassName) {
+    public void addDataModelClass(AnnotatedClass annotatedClass) {
         try {
-            Class clazz = Class.forName(dataModelClassName);
+            Class clazz = Class.forName(annotatedClass.getName());
             dataModelClasses.add(clazz);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

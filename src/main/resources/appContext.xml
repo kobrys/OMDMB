@@ -26,4 +26,6 @@
     <bean id="benchmarkScenarioBuilder" class="pl.edu.agh.omdmb.core.scenario.BenchmarkScenarioBuilder" />
 
     <bean id="persistenceUnitConfigurationBuilder" class="pl.edu.agh.omdmb.jpa.util.PersistenceUnitConfigurationBuilder" />
+
+    <bean id="threadExecutor" class="com.sun.jmx.remote.internal.ClientNotifForwarder.LinearExecutor" />
 </beans>
