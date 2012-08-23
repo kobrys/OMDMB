@@ -1,4 +1,4 @@
-package system.pl.edu.agh.omdmb.system.jpa.hibernate;
+package system.pl.edu.agh.omdmb.jpa.hibernate;
 
 import org.junit.Test;
 import pl.edu.agh.omdmb.jpa.hibernate.HibernateConfiguration;

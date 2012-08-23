@@ -1,57 +1,72 @@
 package pl.edu.agh.omdmb.scenario;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.edu.agh.omdmb.jpa.EntityManagerProvider;
 import pl.edu.agh.omdmb.jpa.util.EntityManagerBuilder;
 import pl.edu.agh.omdmb.jpa.util.PersistenceUnitConfiguration;
 import pl.edu.agh.omdmb.jpa.util.EntityManagerProviderType;
 import pl.edu.agh.omdmb.jpa.EntityManagerRegistry;
+import pl.edu.agh.omdmb.scenario.configuration.ExecutionParameters;
+import pl.edu.agh.omdmb.scenario.configuration.Scenario;
 
-import java.util.Map;
-import java.util.Properties;
+import java.security.PublicKey;
+import java.util.*;
 
 public class BenchmarkScenario implements Runnable {
 
-    private BenchmarkConfiguration benchmarkConfiguration;
-    private BenchmarkConfigurationLoader benchmarkConfigurationLoader;
+    @Autowired private EntityManagerRegistry entityManagerRegistry;
+    @Autowired private EntityManagerBuilder entityManagerBuilder;
 
-    private EntityManagerRegistry entityManagerRegistry;
-    private EntityManagerBuilder entityManagerBuilder;
+    private Map<EntityManagerProviderType, PersistenceUnitConfiguration> persistenceUnitConfigurations;
+    private List<ExecutionParameters> executionsParameters;
+
+    public BenchmarkScenario() {
+        persistenceUnitConfigurations = new HashMap<EntityManagerProviderType, PersistenceUnitConfiguration>();
+        executionsParameters = new LinkedList<ExecutionParameters>();
+    }
 
     @Override
     public void run() {
 
     }
 
-    void loadConfiguration() {
-        benchmarkConfiguration = benchmarkConfigurationLoader.load();
-    }
+    void createEnvironment(Map<EntityManagerProviderType, Properties> entityManagerProviderTypePropertiesMap,
+                           List<Class<?>> dataModelClasses) {
 
-    void createEnvironment() {
-        for (Map.Entry<EntityManagerProviderType, PersistenceUnitConfiguration> persistenceUnitConfiguration :
-                benchmarkConfiguration.getPersistenceUnitsConfiguration().entrySet()) {
-            EntityManagerProviderType persistenceUnitType = persistenceUnitConfiguration.getKey();
-            PersistenceUnitConfiguration persistenceUnitProperties = persistenceUnitConfiguration.getValue();
+        for (Map.Entry<EntityManagerProviderType, Properties> entityManagerProviderTypePropertiesEntry :
+                entityManagerProviderTypePropertiesMap.entrySet()) {
+            EntityManagerProviderType persistenceUnitType = entityManagerProviderTypePropertiesEntry.getKey();
 
-            EntityManagerProvider entityManagerProvider = entityManagerBuilder.createEntityManagerProvider(
-                    persistenceUnitType, persistenceUnitProperties);
-
-            entityManagerRegistry.register(persistenceUnitType, entityManagerProvider.getEntityManager());
         }
+
+
+//        for (Map.Entry<EntityManagerProviderType, P> persistenceUnitConfiguration :
+//                entityManagerProviderTypePropertiesMap.entrySet()) {
+//            EntityManagerProviderType persistenceUnitType = persistenceUnitConfiguration.getKey();
+//            PersistenceUnitConfiguration persistenceUnitProperties = persistenceUnitConfiguration.getValue();
+
+//            EntityManagerProvider entityManagerProvider = entityManagerBuilder.createEntityManagerProvider(
+//                    persistenceUnitType, persistenceUnitProperties);
+//
+//            entityManagerRegistry.register(persistenceUnitType, entityManagerProvider.getEntityManager());
+//        }
     }
 
-    public BenchmarkConfiguration getBenchmarkConfiguration() {
-        return benchmarkConfiguration;
+    public void addPersistenceUnitConfiguration(EntityManagerProviderType entityManagerProviderType,
+                                                PersistenceUnitConfiguration persistenceUnitConfiguration) {
+        persistenceUnitConfigurations.put(entityManagerProviderType, persistenceUnitConfiguration);
+
     }
 
-    public void setConfigurationLoader(BenchmarkConfigurationLoader benchmarkConfigurationLoader) {
-        this.benchmarkConfigurationLoader = benchmarkConfigurationLoader;
+    public Map<EntityManagerProviderType, PersistenceUnitConfiguration> getPersistenceUnitConfigurations() {
+        return  persistenceUnitConfigurations;
     }
 
-    public void setEntityManagerBuilder(EntityManagerBuilder entityManagerBuilder) {
-        this.entityManagerBuilder = entityManagerBuilder;
+    public void addExecutionParameters(ExecutionParameters executionParameters) {
+        executionsParameters.add(executionParameters);
     }
 
-    public void setEntityManagerRegistry(EntityManagerRegistry entityManagerRegistry) {
-        this.entityManagerRegistry = entityManagerRegistry;
+    public List<ExecutionParameters> getExecutionsParameters() {
+        return executionsParameters;
     }
 }

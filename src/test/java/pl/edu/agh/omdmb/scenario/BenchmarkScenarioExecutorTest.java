@@ -3,21 +3,23 @@ package pl.edu.agh.omdmb.scenario;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.concurrent.Executor;
+
+import static org.mockito.Mockito.verify;
+
 @RunWith(MockitoJUnitRunner.class)
 public class BenchmarkScenarioExecutorTest {
 
+    @Mock Executor executor;
     @Mock BenchmarkScenario scenario;
 
+    @InjectMocks
     BenchmarkScenarioExecutor benchmarkScenarioExecutor;
-
-    @Before
-    public void setUp() {
-        benchmarkScenarioExecutor = new BenchmarkScenarioExecutor();
-    }
 
     @Test
     public void testExecute() throws Exception {
@@ -25,6 +27,6 @@ public class BenchmarkScenarioExecutorTest {
         benchmarkScenarioExecutor.execute(scenario);
 
         //then
-        Mockito.verify(scenario).run();
+        verify(executor).execute(scenario);
     }
 }

@@ -3,32 +3,32 @@
         <jpaPersistenceFile>persistence.xml</jpaPersistenceFile>
         <persistenceUnitConfigurations>
             <unit>
-                <typeName>hibernate</typeName>
-                <configurationFile>hibernate_connection.properties</configurationFile>
+                <typeName>HIBERNATE</typeName>
+                <configurationFile>META-INF/hibernate_connection.properties</configurationFile>
             </unit>
-            <unit>
-                <typeName>objectDb</typeName>
-                <configurationFile>objectDb_connection.properties</configurationFile>
-            </unit>
-            <unit>
-                <typeName>hibernate</typeName>
-                <configurationFile>keyValue.properties</configurationFile>
-            </unit>
+            <!--<unit>-->
+                <!--<typeName>OBJECT_DB</typeName>-->
+                <!--<configurationFile>objectDb_connection.properties</configurationFile>-->
+            <!--</unit>-->
+            <!--<unit>-->
+                <!--<typeName>KEY_VALUE</typeName>-->
+                <!--<configurationFile>keyValue.properties</configurationFile>-->
+            <!--</unit>-->
         </persistenceUnitConfigurations>
     </persistence>
 
     <dataModel>
         <classes>
-            <class>pl.edu.agh.omdmb.testdao.FirstDao</class>
+            <annotatedClass><name>pl.edu.agh.omdmb.testdao.FirstDao</name></annotatedClass>
         </classes>
     </dataModel>
 
     <data>
-        <execution1>
+        <execution>
             <dataDensity>0.5</dataDensity>
             <overlap>1</overlap>
-            <objects>10000</objects>
+            <numberOfObjects>10000</numberOfObjects>
             <independence>30</independence>
-        </execution1>
+        </execution>
     </data>
 </scenario>

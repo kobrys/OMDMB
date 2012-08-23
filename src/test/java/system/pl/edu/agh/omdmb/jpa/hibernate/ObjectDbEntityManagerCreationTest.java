@@ -1,4 +1,4 @@
-package system.pl.edu.agh.omdmb.system.jpa.hibernate;
+package system.pl.edu.agh.omdmb.jpa.hibernate;
 
 import pl.edu.agh.omdmb.testdao.FirstDao;
 import org.junit.Test;
