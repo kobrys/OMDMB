@@ -42,4 +42,16 @@ public class BenchmarkConfigurationLoader {
 
         return entityManagerProvidersConfigurations;
     }
+
+    public void setXmlConfigurationLoader(XmlConfigurationLoader xmlConfigurationLoader) {
+        this.xmlConfigurationLoader = xmlConfigurationLoader;
+    }
+
+    public void setPropertiesConfigurationLoader(PropertiesConfigurationLoader propertiesConfigurationLoader) {
+        this.propertiesConfigurationLoader = propertiesConfigurationLoader;
+    }
+
+    public void setBenchmarkScenarioBuilder(BenchmarkScenarioBuilder benchmarkScenarioBuilder) {
+        this.benchmarkScenarioBuilder = benchmarkScenarioBuilder;
+    }
 }

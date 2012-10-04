@@ -34,7 +34,7 @@ public class OMDMBTest {
 //        when(benchmarkConfigurationLoader.loadConfiguration(args[1])).thenReturn(benchmarkConfiguration2);
 
         //when
-        omdmb.start(args);
+        omdmb.start();
 
         //then
         verify(benchmarkConfigurationLoader).loadConfiguration(FIRST);
