@@ -3,10 +3,10 @@ package pl.edu.agh.omdmb.scenario;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.edu.agh.omdmb.core.scenario.BenchmarkScenarioBuilder;
 import pl.edu.agh.omdmb.jpa.util.EntityManagerProviderType;
-import pl.edu.agh.omdmb.scenario.configuration.PersistenceUnitConfiguration;
-import pl.edu.agh.omdmb.scenario.configuration.PropertiesConfigurationLoader;
-import pl.edu.agh.omdmb.scenario.configuration.Scenario;
-import pl.edu.agh.omdmb.scenario.configuration.XmlConfigurationLoader;
+import pl.edu.agh.omdmb.configuration.benchmark.model.PersistenceUnitConfiguration;
+import pl.edu.agh.omdmb.configuration.benchmark.model.PropertiesConfigurationLoader;
+import pl.edu.agh.omdmb.configuration.benchmark.model.Scenario;
+import pl.edu.agh.omdmb.util.XmlToObjectLoader;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,12 +15,12 @@ import java.util.Properties;
 
 public class BenchmarkConfigurationLoader {
 
-    @Autowired private XmlConfigurationLoader xmlConfigurationLoader;
+    @Autowired private XmlToObjectLoader xmlToObjectLoader;
     @Autowired private PropertiesConfigurationLoader propertiesConfigurationLoader;
     @Autowired private BenchmarkScenarioBuilder benchmarkScenarioBuilder;
 
     public BenchmarkScenario loadConfiguration(String configurationFilename) {
-        Scenario scenario = xmlConfigurationLoader.loadScenarioFromFile(configurationFilename);
+        Scenario scenario = xmlToObjectLoader.loadFromFile(configurationFilename);
 
         Map<EntityManagerProviderType, Properties> entityManagerProviderTypePropertiesMap
                 = loadPersistenceUnitsConfigurations(scenario.getPersistenceUnits());
@@ -43,8 +43,8 @@ public class BenchmarkConfigurationLoader {
         return entityManagerProvidersConfigurations;
     }
 
-    public void setXmlConfigurationLoader(XmlConfigurationLoader xmlConfigurationLoader) {
-        this.xmlConfigurationLoader = xmlConfigurationLoader;
+    public void setXmlToObjectLoader(XmlToObjectLoader xmlToObjectLoader) {
+        this.xmlToObjectLoader = xmlToObjectLoader;
     }
 
     public void setPropertiesConfigurationLoader(PropertiesConfigurationLoader propertiesConfigurationLoader) {

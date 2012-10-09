@@ -1,4 +1,4 @@
-package pl.edu.agh.omdmb.scenario.configuration;
+package pl.edu.agh.omdmb.configuration.benchmark.model;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -10,13 +10,13 @@
 
     <bean id="xmlConfigurationDigester" class="org.apache.commons.digester3.Digester" />
 
-    <bean id="propertiesConfigurationLoader" class="pl.edu.agh.omdmb.scenario.configuration.PropertiesConfigurationLoader" />
+    <bean id="propertiesConfigurationLoader" class="pl.edu.agh.omdmb.configuration.benchmark.model.PropertiesConfigurationLoader" />
 
-    <bean id="xmlConfigurationLoader" class="pl.edu.agh.omdmb.scenario.configuration.XmlConfigurationLoader">
+    <bean id="xmlToObjectLoader" class="pl.edu.agh.omdmb.util.XmlToObjectLoader">
         <constructor-arg ref="xmlConfigurationRulesModule" />
     </bean>
 
-    <bean id="xmlConfigurationRulesModule" class="pl.edu.agh.omdmb.scenario.configuration.XmlConfigurationRulesModule"/>
+    <bean id="xmlConfigurationRulesModule" class="pl.edu.agh.omdmb.configuration.benchmark.model.XmlConfigurationRulesModule"/>
 
     <bean id="benchmarkScenarioBuilder" class="pl.edu.agh.omdmb.core.scenario.BenchmarkScenarioBuilder" />
 

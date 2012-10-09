@@ -6,15 +6,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import pl.edu.agh.omdmb.core.scenario.BenchmarkScenarioBuilder;
-import pl.edu.agh.omdmb.jpa.util.EntityManagerProviderType;
-import pl.edu.agh.omdmb.scenario.configuration.PersistenceUnitConfiguration;
-import pl.edu.agh.omdmb.scenario.configuration.PropertiesConfigurationLoader;
-import pl.edu.agh.omdmb.scenario.configuration.Scenario;
-import pl.edu.agh.omdmb.scenario.configuration.XmlConfigurationLoader;
+import pl.edu.agh.omdmb.configuration.benchmark.model.PersistenceUnitConfiguration;
+import pl.edu.agh.omdmb.configuration.benchmark.model.PropertiesConfigurationLoader;
+import pl.edu.agh.omdmb.configuration.benchmark.model.Scenario;
+import pl.edu.agh.omdmb.util.XmlToObjectLoader;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -30,7 +28,8 @@ public class BenchmarkConfigurationLoaderTest {
     public static final String FILE_2 = "FILE_2";
     public static final String FILE_3 = "FILE_3";
 
-    @Mock XmlConfigurationLoader xmlConfigurationLoader;
+    @Mock
+    XmlToObjectLoader xmlToObjectLoader;
     @Mock PropertiesConfigurationLoader propertiesConfigurationLoader;
     @Mock Scenario scenario;
 
@@ -46,20 +45,20 @@ public class BenchmarkConfigurationLoaderTest {
     @Test
     public void loadXmlScenarioConfiguration() {
         //given
-        when(xmlConfigurationLoader.loadScenarioFromFile(XML_CONFIGURATION_FILENAME)).thenReturn(scenario);
+        when(xmlToObjectLoader.loadFromFile(XML_CONFIGURATION_FILENAME)).thenReturn(scenario);
 
         //when
         benchmarkConfigurationLoader.loadConfiguration(XML_CONFIGURATION_FILENAME);
 
         //then
-        verify(xmlConfigurationLoader).loadScenarioFromFile(XML_CONFIGURATION_FILENAME);
+        verify(xmlToObjectLoader).loadFromFile(XML_CONFIGURATION_FILENAME);
         verify(scenario).getPersistenceUnits();
     }
 
     @Test
     public void loadEntityManagerPropertiesFiles() {
         //given
-        when(xmlConfigurationLoader.loadScenarioFromFile(XML_CONFIGURATION_FILENAME)).thenReturn(scenario);
+        when(xmlToObjectLoader.loadFromFile(XML_CONFIGURATION_FILENAME)).thenReturn(scenario);
         List<PersistenceUnitConfiguration> persistenceUnitConfigurationList =
                 new LinkedList<PersistenceUnitConfiguration>();
         givenPersistenceUnitConfiguration(persistenceUnitConfigurationList);
@@ -68,7 +67,7 @@ public class BenchmarkConfigurationLoaderTest {
         benchmarkConfigurationLoader.loadConfiguration(XML_CONFIGURATION_FILENAME);
 
         //then
-        verify(xmlConfigurationLoader).loadScenarioFromFile(XML_CONFIGURATION_FILENAME);
+        verify(xmlToObjectLoader).loadFromFile(XML_CONFIGURATION_FILENAME);
         verify(scenario).getPersistenceUnits();
         verify(propertiesConfigurationLoader).loadPropertiesFromFile(FILE_1);
         verify(propertiesConfigurationLoader).loadPropertiesFromFile(FILE_2);

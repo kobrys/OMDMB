@@ -15,7 +15,7 @@
     <bean id="omdmb" class="pl.edu.agh.omdmb.core.OMDMB" />
 
     <bean id="benchmarkConfigurationLoader" class="pl.edu.agh.omdmb.scenario.BenchmarkConfigurationLoader">
-        <property name="xmlConfigurationLoader" ref="xmlConfigurationLoader" />
+        <property name="xmlToObjectLoader" ref="xmlToObjectLoader" />
         <property name="propertiesConfigurationLoader" ref="propertiesConfigurationLoader" />
         <property name="benchmarkScenarioBuilder" ref="benchmarkScenarioBuilder" />
     </bean>

@@ -1,7 +1,6 @@
-package pl.edu.agh.omdmb.scenario.configuration;
+package pl.edu.agh.omdmb.configuration.benchmark.model;
 
 import org.apache.commons.digester3.binder.AbstractRulesModule;
-import pl.edu.agh.omdmb.scenario.BenchmarkScenario;
 
 import java.util.LinkedList;
 

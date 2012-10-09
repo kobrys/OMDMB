@@ -1,4 +1,4 @@
-package pl.edu.agh.omdmb.scenario.configuration;
+package pl.edu.agh.omdmb.configuration.benchmark.model;
 
 import org.springframework.scheduling.support.SimpleTriggerContext;
 import pl.edu.agh.omdmb.jpa.util.EntityManagerProviderType;

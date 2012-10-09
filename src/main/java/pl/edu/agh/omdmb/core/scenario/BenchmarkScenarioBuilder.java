@@ -2,11 +2,10 @@ package pl.edu.agh.omdmb.core.scenario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.edu.agh.omdmb.jpa.util.EntityManagerProviderType;
-import pl.edu.agh.omdmb.jpa.util.PersistenceUnitConfiguration;
 import pl.edu.agh.omdmb.jpa.util.PersistenceUnitConfigurationBuilder;
 import pl.edu.agh.omdmb.scenario.BenchmarkScenario;
-import pl.edu.agh.omdmb.scenario.configuration.ExecutionParameters;
-import pl.edu.agh.omdmb.scenario.configuration.Scenario;
+import pl.edu.agh.omdmb.configuration.benchmark.model.ExecutionParameters;
+import pl.edu.agh.omdmb.configuration.benchmark.model.Scenario;
 
 import java.util.Map;
 import java.util.Properties;

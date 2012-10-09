@@ -10,6 +10,11 @@ import pl.edu.agh.omdmb.scenario.BenchmarkScenarioExecutor;
 
 public class OMDMB {
 
+    private Object configurationProvider;
+    private Object dataProvider;
+    private Object persistenceProvider;
+    private Object executionProvider;
+
     public static String APP_CONTEXT_XML = "appContext.xml";
     public static final String OMDMB = "omdmb";
 

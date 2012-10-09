@@ -1,15 +1,12 @@
 package pl.edu.agh.omdmb.scenario;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.edu.agh.omdmb.jpa.EntityManagerProvider;
 import pl.edu.agh.omdmb.jpa.util.EntityManagerBuilder;
 import pl.edu.agh.omdmb.jpa.util.PersistenceUnitConfiguration;
 import pl.edu.agh.omdmb.jpa.util.EntityManagerProviderType;
 import pl.edu.agh.omdmb.jpa.EntityManagerRegistry;
-import pl.edu.agh.omdmb.scenario.configuration.ExecutionParameters;
-import pl.edu.agh.omdmb.scenario.configuration.Scenario;
+import pl.edu.agh.omdmb.configuration.benchmark.model.ExecutionParameters;
 
-import java.security.PublicKey;
 import java.util.*;
 
 public class BenchmarkScenario implements Runnable {
