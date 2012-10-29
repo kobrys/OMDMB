@@ -1,6 +1,6 @@
 <scenario>
     <persistence>
-        <jpaPersistenceFile>persistence.xml</jpaPersistenceFile>
+        <jpaPersistenceFileName>persistence.xml</jpaPersistenceFileName>
         <persistenceUnitConfigurations>
             <unit>
                 <typeName>HIBERNATE</typeName>
@@ -19,7 +19,7 @@
 
     <dataModel>
         <classes>
-            <annotatedClass><name>pl.edu.agh.omdmb.testdao.FirstDao</name></annotatedClass>
+            <annotatedClass><className>pl.edu.agh.omdmb.testdao.FirstDao</className></annotatedClass>
         </classes>
     </dataModel>
 

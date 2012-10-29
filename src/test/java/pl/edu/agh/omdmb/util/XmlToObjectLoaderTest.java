@@ -1,23 +1,19 @@
 package pl.edu.agh.omdmb.util;
 
-import junit.framework.Assert;
 import org.apache.commons.digester3.Digester;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.BDDMockito;
-import org.mockito.Matchers;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import pl.edu.agh.omdmb.configuration.benchmark.model.Scenario;
+import pl.edu.agh.omdmb.configuration.benchmark.model.BenchmarkConfiguration;
+import pl.edu.agh.omdmb.configuration.util.XmlToObjectLoader;
 
 import java.io.File;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.validateMockitoUsage;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -27,12 +23,12 @@ public class XmlToObjectLoaderTest {
     private XmlToObjectLoader instance;
 
     @Mock Digester digester;
-    @Mock Scenario scenario;
+    @Mock BenchmarkConfiguration scenario;
 
     @Before
     public void setUp() {
         instance = new XmlToObjectLoader();
-        instance.setDigester(digester);
+//        instance.setDigester(digester);
     }
 
     @Test
@@ -41,7 +37,7 @@ public class XmlToObjectLoaderTest {
         given(digester.parse(any(File.class))).willReturn(scenario);
 
         //when
-        Scenario returnedValue = instance.loadFromFile(FILENAME);
+        BenchmarkConfiguration returnedValue = instance.loadFromFile(FILENAME);
 
         //then
         verify(digester.parse(any(File.class)));
@@ -54,7 +50,7 @@ public class XmlToObjectLoaderTest {
         given(digester.parse(any(File.class))).willThrow(new RuntimeException());
 
         //when
-        Scenario returnedValue = instance.loadFromFile(FILENAME);
+        BenchmarkConfiguration returnedValue = instance.loadFromFile(FILENAME);
     }
 
 }

@@ -5,19 +5,19 @@
 
 
     <!-- hibernate -->
-    <persistence-unit name="hibernate" transaction-type="RESOURCE_LOCAL" >
+    <persistence-unit className="hibernate" transaction-type="RESOURCE_LOCAL" >
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
     </persistence-unit>
 
 
     <!-- KV -->
-    <persistence-unit name="object_db" transaction-type="RESOURCE_LOCAL" >
+    <persistence-unit className="object_db" transaction-type="RESOURCE_LOCAL" >
 
     </persistence-unit>
 
 
     <!-- objectDb -->
-    <persistence-unit name="key_valie" transaction-type="RESOURCE_LOCAL" >
+    <persistence-unit className="key_valie" transaction-type="RESOURCE_LOCAL" >
 
     </persistence-unit>
 

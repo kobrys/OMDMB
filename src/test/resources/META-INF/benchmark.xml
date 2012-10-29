@@ -1,6 +1,6 @@
 <scenario>
     <persistence>
-        <jpaPersistenceFile>persistence.xml</jpaPersistenceFile>
+        <jpaPersistenceFileName>persistence.xml</jpaPersistenceFileName>
         <persistenceUnitConfigurations>
             <unit>
                 <typeName>HIBERNATE</typeName>

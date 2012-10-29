@@ -1,29 +1,13 @@
 package pl.edu.agh.omdmb.scenario;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
-import pl.edu.agh.omdmb.jpa.hibernate.HibernateConfiguration;
-import pl.edu.agh.omdmb.jpa.hibernate.HibernateEntityManagerProvider;
-import pl.edu.agh.omdmb.jpa.util.EntityManagerBuilder;
-import pl.edu.agh.omdmb.jpa.util.EntityManagerProviderType;
-import pl.edu.agh.omdmb.jpa.EntityManagerRegistry;
-import pl.edu.agh.omdmb.jpa.util.PersistenceUnitConfiguration;
-
-import javax.persistence.EntityManager;
-
-import java.util.*;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static pl.edu.agh.omdmb.jpa.util.EntityManagerProviderType.HIBERNATE;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BenchmarkScenarioTest {
@@ -80,7 +64,7 @@ public class BenchmarkScenarioTest {
 //
 //        //when
 //        benchmarkScenario.loadConfiguration();
-//        benchmarkScenario.createEnvironment(entityManagerProviderTypePropertiesMap, scenario.getDataModelClasses());
+//        benchmarkScenario.createEnvironment(entityManagerProviderTypePropertiesMap, scenario.getConfiguredClasses());
 //
 //        //then
 //        verify(hibernateEntityManagerProvider).getEntityManager();

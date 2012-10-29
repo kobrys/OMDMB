@@ -8,20 +8,6 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
-    <bean id="xmlConfigurationDigester" class="org.apache.commons.digester3.Digester" />
 
-    <bean id="propertiesConfigurationLoader" class="pl.edu.agh.omdmb.configuration.benchmark.model.PropertiesConfigurationLoader" />
-
-    <bean id="xmlToObjectLoader" class="pl.edu.agh.omdmb.util.XmlToObjectLoader">
-        <constructor-arg ref="xmlConfigurationRulesModule" />
-    </bean>
-
-    <bean id="xmlConfigurationRulesModule" class="pl.edu.agh.omdmb.configuration.benchmark.model.XmlConfigurationRulesModule"/>
-
-    <bean id="benchmarkScenarioBuilder" class="pl.edu.agh.omdmb.core.scenario.BenchmarkScenarioBuilder" />
-
-    <bean id="persistenceUnitConfigurationBuilder" class="pl.edu.agh.omdmb.jpa.util.PersistenceUnitConfigurationBuilder" />
-
-    <bean id="threadExecutor" class="com.sun.jmx.remote.internal.ClientNotifForwarder.LinearExecutor" />
 
 </beans>

@@ -9,10 +9,10 @@ public class HibernateEntityManagerProvider extends EntityManagerProvider {
     private EntityManager entityManager;
 
     public HibernateEntityManagerProvider(HibernateConfiguration configuration) {
-        entityManager = configuration
-                .getEjbConfiguration()
-                .buildEntityManagerFactory()
-                .createEntityManager();
+//        entityManager = configuration
+//                .getEjbConfiguration()
+//                .buildEntityManagerFactory()
+//                .createEntityManager();
     }
 
     public EntityManager getEntityManager() {

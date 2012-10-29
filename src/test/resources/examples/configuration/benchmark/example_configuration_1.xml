@@ -1,0 +1,11 @@
+<configuration>
+    <persistence>
+        <jpaPersistenceFileName>jpaPersistenceFileName.xml</jpaPersistenceFileName>
+    </persistence>
+
+    <dataModel>
+        <configuredClasses>
+            <clazz>java.lang.String</clazz>
+        </configuredClasses>
+    </dataModel>
+</configuration>

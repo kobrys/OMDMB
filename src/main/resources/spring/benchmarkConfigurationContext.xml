@@ -8,19 +8,17 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
-    <context:annotation-config />
+    <!--<context:annotation-config />-->
 
-    <import resource="configurationContext.xml" />
+    <bean id="benchmarkConfigurationLoader" class="pl.edu.agh.omdmb.configuration.benchmark.BenchmarkConfigurationLoader"/>
 
-    <bean id="omdmb" class="pl.edu.agh.omdmb.core.OMDMB" />
-
-    <bean id="benchmarkConfigurationLoader" class="pl.edu.agh.omdmb.configuration.benchmark.BenchmarkConfigurationLoader">
-        <property className="xmlToObjectLoader" ref="xmlToObjectLoader" />
-        <property className="propertiesConfigurationLoader" ref="propertiesConfigurationLoader" />
-        <property className="benchmarkScenarioBuilder" ref="benchmarkScenarioBuilder" />
+    <bean id="xmlToObjectLoader" class="pl.edu.agh.omdmb.configuration.util.XmlToObjectLoader">
+        <property name="digester" ref="benchmarkConfigurationDigester"/>
     </bean>
 
-    <bean id="benchmarkScenarioExecutor" class="pl.edu.agh.omdmb.scenario.BenchmarkScenarioExecutor" />
+    <bean id="benchmarkConfigurationDigester" factory-method="buildDigesterForRulesModule" class="pl.edu.agh.omdmb.configuration.util.ConfigurableDigesterFactory">
+        <constructor-arg ref="xmlConfigurationRulesModule" />
+    </bean>
 
-    <util:properties id="configurationProperties" location="classpath:system.properties" />
+    <bean id="xmlConfigurationRulesModule" class="pl.edu.agh.omdmb.configuration.benchmark.XmlConfigurationRulesModule"/>
 </beans>

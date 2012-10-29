@@ -1,7 +1,5 @@
 package pl.edu.agh.omdmb.jpa.util;
 
-import pl.edu.agh.omdmb.jpa.hibernate.HibernateConfiguration;
-
 import java.util.List;
 import java.util.Properties;
 
@@ -14,7 +12,7 @@ public class PersistenceUnitConfigurationBuilder {
     public PersistenceUnitConfiguration build(EntityManagerProviderType type, Properties properties,
                                               List<Class<?>> modelClasses) {
         if (type == HIBERNATE) {
-            return new HibernateConfiguration(properties, modelClasses);
+            throw new UnsupportedOperationException();
         } else if (type == OBJECT_DB) {
             throw new UnsupportedOperationException();
         } else if (type == KEY_VALUE) {
