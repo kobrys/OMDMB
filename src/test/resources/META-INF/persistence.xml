@@ -22,14 +22,41 @@
         </properties>
     </persistence-unit>
 
+    <!-- objectdb -->
+    <persistence-unit name="objectdb">
+        <description>My Persistence Unit</description>
+        <provider>com.objectdb.jpa.Provider</provider>
 
-    <!-- derby -->
+        <class>systemtest.benchmark.model1.Worker</class>
+        <exclude-unlisted-classes/>
 
+        <properties>
+            <property name="javax.persistence.jdbc.url"
+                      value="objectdb:objectdb.odb"/>
+            <property name="javax.persistence.jdbc.user" value="admin"/>
+            <property name="javax.persistence.jdbc.password" value="admin"/>
+        </properties>
+    </persistence-unit>
+
+
+    <!-- openjpa -->
+    <persistence-unit name="openjpa">
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+        <class>tutorial.Animal</class>
+        <class>tutorial.Dog</class>
+        <class>tutorial.Rabbit</class>
+        <class>systemtest.benchmark.model1.Worker</class>
+        <properties>
+            <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost/openjpa"/>
+            <property name="openjpa.ConnectionDriverName" value="org.postgresql.Driver"/>
+            <property name="openjpa.ConnectionUserName" value="postgres"/>
+            <property name="openjpa.ConnectionPassword" value="a23d2a87m"/>
+            <property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO"/>
+        </properties>
+    </persistence-unit>
 
     <!-- eclipse link -->
 
-
-    <!-- objectdb -->
 
 
     <!-- infinispan -->
