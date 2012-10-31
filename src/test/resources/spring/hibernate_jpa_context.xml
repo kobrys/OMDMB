@@ -10,17 +10,5 @@
 
     <context:annotation-config />
 
-    <import resource="configurationContext.xml" />
 
-    <bean id="omdmb" class="pl.edu.agh.omdmb.core.OMDMB" />
-
-    <bean id="benchmarkConfigurationLoader" class="pl.edu.agh.omdmb.configuration.benchmark.BenchmarkConfigurationLoader">
-        <property className="xmlToObjectLoader" ref="xmlToObjectLoader" />
-        <property className="propertiesConfigurationLoader" ref="propertiesConfigurationLoader" />
-        <property className="benchmarkScenarioBuilder" ref="benchmarkScenarioBuilder" />
-    </bean>
-
-    <bean id="benchmarkScenarioExecutor" class="pl.edu.agh.omdmb.scenario.BenchmarkScenarioExecutor" />
-
-    <util:properties id="configurationProperties" location="classpath:system.properties" />
 </beans>

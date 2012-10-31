@@ -5,21 +5,33 @@
 
 
     <!-- hibernate -->
-    <persistence-unit className="hibernate" transaction-type="RESOURCE_LOCAL" >
+    <persistence-unit name="hibernate" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <class>systemtest.benchmark.model1.Worker</class>
+        <exclude-unlisted-classes/>
+
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost/hibernate"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="hibernate.connection.username" value="postgres"/>
+            <property name="hibernate.connection.password" value="a23d2a87m"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+        </properties>
     </persistence-unit>
 
 
-    <!-- KV -->
-    <persistence-unit className="object_db" transaction-type="RESOURCE_LOCAL" >
-
-    </persistence-unit>
+    <!-- derby -->
 
 
-    <!-- objectDb -->
-    <persistence-unit className="key_valie" transaction-type="RESOURCE_LOCAL" >
+    <!-- eclipse link -->
 
-    </persistence-unit>
 
+    <!-- objectdb -->
+
+
+    <!-- infinispan -->
 
 </persistence>
